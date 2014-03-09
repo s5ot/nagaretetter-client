@@ -1,5 +1,5 @@
 'use strict';
-angular.module('jwaveyarouClientApp')
+angular.module('nagaretetter')
 .run(function(){
   // 2. This code loads the IFrame Player API code asynchronously.
   var tag = document.createElement('script');
@@ -11,7 +11,6 @@ angular.module('jwaveyarouClientApp')
 })
 .service('YouTube', function($window, $http){
   this.ready = false;
-
   this.player = null;
 
   this.play = function(song, callback) {
@@ -142,8 +141,9 @@ angular.module('jwaveyarouClientApp')
       return 'images/yeoman.png';
     }
     return imageUrl;
-  }
+  };
 
+  YouTube.ready = false;
   $scope.loadMore();
 })
 .directive('whenScrolled',  function($window) {

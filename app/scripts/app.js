@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('jwaveyarouClientApp', [
+angular.module('nagaretetter', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
