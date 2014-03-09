@@ -1,0 +1,48 @@
+$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+
+@import 'sass-bootstrap/lib/bootstrap';
+
+#player {
+  width: 600px;
+  height: 400px;
+  background-color: #000;
+  float: right;
+}
+
+.container {
+  margin-top: 30px;
+}
+
+/*
+.media {
+  border: 1px solid #ddd;
+}
+*/
+
+.media-list li.active, .media-list li.active:hover {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #428bca;
+}
+
+.media-list li:hover, .media-list li:focus {
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+.sidebar-offcanvas {
+  height: 600px;
+  overflow: auto;
+}
+
+li.media {
+  border: 1px solid #ddd;
+  margin-top: 0;
+  padding: 5px;
+}
+
+/*
+div.col-xs-12 {
+  position: fixed;
+}
+*/
