@@ -9,12 +9,13 @@ angular.module('nagaretetter')
 
   $('a[href=#about]').popover().on('click', function(e){e.preventDefault();});
 })
-.service('YouTube', function($window, $http){
+.service('YouTube', function($window, $http, $q){
   this.ready = false;
   this.player = null;
+  this.currentVideoId = null;
 
-  this.play = function(song, callback) {
-    var that = this;
+  this.query = function(song) {
+    var deferred = $q.defer();
     var query = song.title + ' ' + song.artist;
     $http.jsonp('http://gdata.youtube.com/feeds/api/videos', {
       params : {
@@ -30,30 +31,45 @@ angular.module('nagaretetter')
           return b['favoriteCount'] - a['favoriteCount'];
         });
         var permalink = data.feed.entry[0]['id']['$t'];
-        var id = permalink.match(/^.+\/(.+?)$/)[1];
-        if(that.ready) {
-          that.player.clearVideo();
-          that.player.loadVideoById(id);
-        }else{
-          that.player = new YT.Player('player', {
-            height: '400',
-            width: '600',
-            videoId : id,
-            playerVars: { 'autoplay': 1, 'rel': 0 },
-            events : {
-              onStateChange : function (event){
-                if(event.data == YT.PlayerState.ENDED ) {
-                  callback();
-                }
+        var videoId = permalink.match(/^.+\/(.+?)$/)[1];
+        deferred.resolve(videoId);
+      }else{
+        deferred.reject();
+      }
+    }).error(function(error){
+      // Do nothing
+    });
+
+    return deferred.promise;
+  };
+
+  this.play = function(song, callback) {
+    var deferred = $q.defer();
+    var that = this;
+    //var query = song.title + ' ' + song.artist;
+
+    var promise = this.query(song);
+    promise.then(function(videoId){
+      if(that.ready) {
+        that.player.clearVideo();
+        that.player.loadVideoById(videoId);
+      }else{
+        that.player = new YT.Player('player', {
+          height: '400',
+          width: '600',
+          videoId : videoId,
+          playerVars: { 'autoplay': 1, 'rel': 0 },
+          events : {
+            onStateChange : function (event){
+              if(event.data == YT.PlayerState.ENDED ) {
+                callback();
               }
             }
-          });
-        }
-      }else{
-        callback();
+          }
+        });
+        that.ready = true;
       }
-      that.ready = true;
-    }).error(function(error){
+    }, function() {
       callback();
     });
   };
@@ -111,13 +127,13 @@ angular.module('nagaretetter')
   $scope.loadMore = function() {
     $http.get(url, {params: {page: $scope.nextPage }}).
       success(function(data) {
-      if ($scope.nextPage === parseInt(data.page) + 1) {
-        return;
-      }
-      $scope.songs = $scope.songs.concat(data.songs);
-      PlayList.set_songs($scope.songs);
-      $scope.nextPage = parseInt(data.page) + 1;
-    }).
+        if ($scope.nextPage === parseInt(data.page) + 1) {
+          return;
+        }
+        $scope.songs = $scope.songs.concat(data.songs);
+        PlayList.set_songs($scope.songs);
+        $scope.nextPage = parseInt(data.page) + 1;
+      }).
       error(function() {
       console.log('error');
     });
@@ -156,22 +172,24 @@ angular.module('nagaretetter')
         });
     };
 })
-.directive('twitter', [
-    function() {
+.directive('twitter', ['$timeout', 'YouTube',
+    function($timeout, YouTube) {
         return {
-            link: function(scope, element, attr) {
-                setTimeout(function() {
-                        twttr.widgets.createShareButton(
-                            attr.url,
-                            element[0],
-                            function(el) {}, {
-                                count: 'none',
-                                text: attr.text,
-                                hashtags: attr.hashtags
-                            }
-                        );
-                });
-            }
-        }
+          link: function(scope, element, attr) {
+            var promise = YouTube.query(attr.text.split(' - '));
+            promise.then(function(videoId) {
+              var url = 'https://www.youtube.com/watch?v=' + videoId;
+              twttr.widgets.createShareButton(
+                attr.url,
+                element[0],
+                function(el) {}, {
+                  count: 'none',
+                  text: attr.text + ' ' + url,
+                  hashtags: attr.hashtags
+                }
+              );
+            });
+          }
+        };
     }
 ]);
