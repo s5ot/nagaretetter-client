@@ -176,8 +176,10 @@ angular.module('nagaretetter')
     function($timeout, YouTube) {
         return {
           link: function(scope, element, attr) {
-            var promise = YouTube.query(attr.text.split(' - '));
+            var titleAndArtist = attr.text.split(' - ');
+            var promise = YouTube.query({title: titleAndArtist[0], artist: titleAndArtist[1]});
             promise.then(function(videoId) {
+              console.log(videoId);
               var url = 'https://www.youtube.com/watch?v=' + videoId;
               twttr.widgets.createShareButton(
                 attr.url,
