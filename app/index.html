@@ -40,6 +40,7 @@
           <ul class="nav navbar-nav">
             <li><a href="#about" data-container="body" data-toggle="popover" data-placement="bottom" data-content="ナガレテッターはラジオ(J-WAVE)で流れた曲を通じて、音楽・映像との出会いのきっかけを作ろうと考えています。作業用BGM再生機としてもどうぞ。">about</a></li>
             <li><a href="http://s5ot.github.io/about/" target='_blank'>Contact</a></li>
+            <li><a ng-href="{{targetUrl}}" ng-bind="targetLinkName"></a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -48,7 +49,7 @@
     <div class='container'>
       <div class='row row-offcanvas row-offcanvas-right'>
         <!-- Add your site or application content here -->
-        <div class="" ng-view=""></div>
+        <div class="main" ng-view=""></div>
       </div>
     </div>
 
@@ -84,7 +85,9 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/analysis.js"></script>
     <!-- endbuild -->
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script>
 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
     </script>
