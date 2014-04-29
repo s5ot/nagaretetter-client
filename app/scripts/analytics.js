@@ -83,7 +83,8 @@ d3.json(
 $(function() {
   $.get(
     'http://nagaretetter-server.herokuapp.com/songs/ranking_rage.json',
-    //'http://localhost:3000/songs/ranking_range.json', function(data) {
+    //'http://localhost:3000/songs/ranking_range.json',
+    function(data) {
       $('.rankingRange').text(data.ranking_range.range);
     });
 });
