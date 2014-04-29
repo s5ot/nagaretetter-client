@@ -128,7 +128,7 @@ angular.module('nagaretetter')
 
     $scope.songs = [];
     $scope.nextPage = 1;
-    $rootScope.targetUrl = '/#/analysis';
+    $rootScope.targetUrl = '/nagaretetter-client/#/analysis';
     $rootScope.targetLinkName = 'Analysis';
 
     $scope.loadMore = function() {
