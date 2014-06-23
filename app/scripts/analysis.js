@@ -3,7 +3,7 @@ d3.json(
   //'http://localhost:3000/songs/ranking.json',
   function(error, data) {
     var w = 1000;
-    var h = 200;
+    var h = 400;
     //var dataset = [5, 10, 15, 20, 25];
     var ranking = data.ranking;
     var titles = ranking.map(function(d) {
@@ -70,7 +70,16 @@ d3.json(
       .orient('left')
       .tickFormat(d3.format('.0'));
 
-    d3.select('.x.axis').call(xAxis);
+    d3.select('.x.axis')
+      //.attr("transform", "translate(0," + '150' + ")")
+      .call(xAxis)
+      .selectAll("text")
+      .style("text-anchor", "end")
+      .attr("dx", "-.8em")
+      .attr("dy", ".15em")
+      .attr("transform", function(d) {
+        return "rotate(-65)"
+      });
     d3.select('.y.axis').call(yAxis);
 
     $('.bar').popover({
