@@ -13,7 +13,7 @@ d3.json(
       return d.total;
     });
 
-    var svg = d3.select('.main')
+    var svg = d3.select('.analysis-main')
       .append("svg")
       .attr("width", w)
       .attr("height", h);
