@@ -140,12 +140,12 @@ angular.module('nagaretetter')
         }
       }).
       success(function(data) {
-        if ($scope.nextPage === parseInt(data.page) + 1) {
+        if ($scope.nextPage === parseInt(data.page, 10) + 1) {
           return;
         }
         $scope.songs = $scope.songs.concat(data.songs);
         PlayList.set_songs($scope.songs);
-        $scope.nextPage = parseInt(data.page) + 1;
+        $scope.nextPage = parseInt(data.page, 10) + 1;
         $scope.loading = false;
       }).
       error(function() {
