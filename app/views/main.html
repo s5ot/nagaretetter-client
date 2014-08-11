@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<div class='col-xs-6 col-sm-5 sidebar-offcanvas' role="navigation" when-scrolled='loadMore()'>
+<div class='col-xs-6 col-sm-5 sidebar-offcanvas' role="navigation" when-scrolled load-more='loadMore'>
   <ul class='media-list'>
     <li class='media' ng-class='{active: isActive($index)}' ng-repeat='song in songs | filter:query'
     class='list-group-item'>

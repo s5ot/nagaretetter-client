@@ -11,6 +11,7 @@ angular.module('nagaretetter')
       e.preventDefault();
     });
   })
+  /*
   .service('YouTube', function($window, $http, $q) {
     this.ready = false;
     this.player = null;
@@ -30,9 +31,9 @@ angular.module('nagaretetter')
       }).success(function(data) {
         if (data.feed.entry) {
           data.feed.entry.sort(function(a, b) {
-            return b['favoriteCount'] - a['favoriteCount'];
+            return b.favoriteCount - a.favoriteCount;
           });
-          var permalink = data.feed.entry[0]['id']['$t'];
+          var permalink = data.feed.entry[0].id.$t;
           var videoId = permalink.match(/^.+\/(.+?)$/)[1];
           deferred.resolve(videoId);
         } else {
@@ -79,6 +80,7 @@ angular.module('nagaretetter')
       });
     };
   })
+  */
   .service('PlayList', function() {
     this.list = [];
     this.index = 0;
@@ -122,8 +124,7 @@ angular.module('nagaretetter')
       return this.list[index].medium_image.length > 0;
     };
   })
-  .controller('MainCtrl', function($scope, $http, YouTube, PlayList, $rootScope) {
-
+  .controller('MainCtrl', function($scope, $http, YouTube, PlayList, $rootScope, $timeout) {
     var url = 'http://nagaretetter-server.herokuapp.com/songs.json';
 
     $scope.songs = [];
@@ -132,7 +133,6 @@ angular.module('nagaretetter')
     $rootScope.targetLinkName = 'Analysis';
 
     $scope.loadMore = function() {
-      console.log('loadMore');
       $scope.loading = true;
       $http.get(url, {
         params: {
@@ -181,6 +181,7 @@ angular.module('nagaretetter')
     YouTube.ready = false;
     $scope.loadMore();
   })
+  /*
   .directive('whenScrolled', function($window) {
     return function(scope, elem, attr) {
       var raw = elem[elem.length - 1];
@@ -191,6 +192,8 @@ angular.module('nagaretetter')
       });
     };
   })
+  */
+ /*
   .directive('twitter', ['$timeout', 'YouTube',
     function($timeout, YouTube) {
       return {
@@ -216,3 +219,4 @@ angular.module('nagaretetter')
       };
     }
   ]);
+  */
