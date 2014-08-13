@@ -6,16 +6,8 @@ angular.module('nagaretetter')
   tag.src = "http://www.youtube.com/iframe_api";
   var first_tag = document.getElementsByTagName('script')[0];
   first_tag.parentNode.insertBefore(tag, first_tag);
-
-  /*
-  $('a[href=#about]').popover().on('click', function(e) {
-    e.preventDefault();
-  });
-  */
 })
-.controller('MainCtrl', function($scope, $http, YouTube, PlayList, $rootScope, $timeout) {
-  var url = 'http://nagaretetter-server.herokuapp.com/songs.json';
-
+.controller('MainCtrl', function($scope, Songs, YouTube, PlayList, $rootScope) {
   $scope.songs = [];
   $scope.nextPage = 1;
   $rootScope.targetUrl = '#analysis';
@@ -23,12 +15,8 @@ angular.module('nagaretetter')
 
   $scope.loadMore = function() {
     $scope.loading = true;
-    $http.get(url, {
-      params: {
-        page: $scope.nextPage
-      }
-    }).
-    success(function(data) {
+    Songs.query({page: $scope.nextPage}).$promise
+    .then(function(data) {
       if ($scope.nextPage === parseInt(data.page, 10) + 1) {
         return;
       }
@@ -36,8 +24,8 @@ angular.module('nagaretetter')
       PlayList.set_songs($scope.songs);
       $scope.nextPage = parseInt(data.page, 10) + 1;
       $scope.loading = false;
-    }).
-    error(function() {
+    },
+    function() {
       console.log('error');
       $scope.loading = false;
     });
