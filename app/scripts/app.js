@@ -5,6 +5,7 @@ angular.module('nagaretetter', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
+  'd3'
 ])
 .config(function ($routeProvider) {
   $routeProvider

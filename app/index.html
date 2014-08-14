@@ -109,7 +109,6 @@
   <script src="scripts/controllers/main.js"></script>
   <script src="scripts/controllers/analysis.js"></script>
   <!-- endbuild -->
-  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script>
     ! function(d, s, id)
     {
@@ -126,13 +125,14 @@
   </script>
 
   <!-- build:js scripts/analysis.js -->
-  <script src='scripts/analysis.js' ng-if=analysis></script>
   <script src="scripts/directives/whenscrolled.js"></script>
   <script src="scripts/directives/twitter.js"></script>
   <script src="scripts/services/youtube.js"></script>
   <script src="scripts/services/playlist.js"></script>
   <script src="scripts/directives/aboutpopover.js"></script>
   <script src="scripts/services/songs.js"></script>
+  <script src="scripts/services/d3service.js"></script>
+  <script src="scripts/directives/rankingchart.js"></script>
   <!-- endbuild -->
 </body>
 

@@ -7,7 +7,8 @@ angular.module('nagaretetter')
   var first_tag = document.getElementsByTagName('script')[0];
   first_tag.parentNode.insertBefore(tag, first_tag);
 })
-.controller('MainCtrl', function($scope, Songs, YouTube, PlayList, $rootScope) {
+.controller('MainCtrl', ['$scope', 'Songs', 'YouTube', 'PlayList', '$rootScope', 'd3Service', function($scope, Songs, YouTube, PlayList, $rootScope, d3Service) {
+  d3Service.d3();
   $scope.songs = [];
   $scope.nextPage = 1;
   $rootScope.targetUrl = '#analysis';
@@ -57,4 +58,4 @@ angular.module('nagaretetter')
 
   YouTube.ready = false;
   $scope.loadMore();
-});
+}]);
