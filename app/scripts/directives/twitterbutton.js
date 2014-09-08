@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc directive
- * @name nagaretetter.directive:Twitter
+ * @name nagaretetter.directive:TwitterButton
  * @description
  * # Twitter
  */
 angular.module('nagaretetter')
-.directive('twitter', ['$timeout', 'YouTube', function ($timeout, YouTube) {
+.directive('twitterButton', ['$timeout', 'YouTube', function ($timeout, YouTube) {
   return {
     link: function(scope, element, attr) {
       element.bind('$destroy', function() {

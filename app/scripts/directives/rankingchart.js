@@ -28,9 +28,9 @@ angular.module('nagaretetter')
 
             //var svg = d3.select('.analysis-main')
             var svg = d3.select(element[0])
-            .append("svg")
-            .attr("width", w)
-            .attr("height", h);
+            .append('svg')
+            .attr('width', w)
+            .attr('height', h);
 
             var g = svg.append('g')
             .attr('transform', 'translate(40, 20)');
@@ -53,8 +53,8 @@ angular.module('nagaretetter')
             rect.enter().append("rect");
             rect.exit().remove();
             rect.attr('class', 'bar')
-            .attr("width", xScale.rangeBand())
-            .attr("height", function(d) {
+            .attr('width', xScale.rangeBand())
+            .attr('height', function(d) {
               return 150 - yScale(d.total);
             })
             .attr("x", function(d) {
@@ -64,9 +64,9 @@ angular.module('nagaretetter')
               return yScale(d.total);
             })
             .attr({
-              'data-container': "body",
-              'data-toggle': "popover",
-              'data-placement': "right"
+              'data-container': 'body',
+              'data-toggle': 'popover',
+              'data-placement': 'right'
             })
             .attr('data-content', function(d) {
               return d.title + ' / ' + d.artist;
@@ -87,12 +87,12 @@ angular.module('nagaretetter')
             d3.select('.x.axis')
             //.attr("transform", "translate(0," + '150' + ")")
             .call(xAxis)
-            .selectAll("text")
-            .style("text-anchor", "end")
-            .attr("dx", "-.8em")
-            .attr("dy", ".15em")
-            .attr("transform", function(d) {
-              return "rotate(-65)"
+            .selectAll('text')
+            .style('text-anchor', 'end')
+            .attr('dx', '-.8em')
+            .attr('dy', '.15em')
+            .attr('transform', function(d) {
+              return 'rotate(-65)';
             });
             d3.select('.y.axis').call(yAxis);
 

@@ -11,13 +11,13 @@ angular.module('nagaretetter', [
   $routeProvider
   .when('/', {
     templateUrl: 'views/main.html',
-    controller: 'MainCtrl'
+    controller: 'MainController'
   })
   .when('/analysis', {
     templateUrl: 'views/analysis.html',
-    controller: 'AnalysisCtrl'
+    controller: 'AnalysisController'
   })
   .otherwise({
     redirectTo: '/'
   });
-})
+});

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('nagaretetter')
-.controller('AnalysisCtrl', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
+.controller('AnalysisController', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
   $rootScope.targetUrl = '#';
   $rootScope.targetLinkName = 'Main';
 
