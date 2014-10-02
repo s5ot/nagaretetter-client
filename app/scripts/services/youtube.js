@@ -17,21 +17,21 @@ angular.module('nagaretetter')
     query: function(song) {
       var deferred = $q.defer();
       var query = song.title + ' ' + song.artist;
-      $http.jsonp('http://gdata.youtube.com/feeds/api/videos', {
+      $http.jsonp('https:///www.googleapis.com/youtube/v3/videos', {
         params: {
           q: query + ' -みた -コピ -カラオケ -ピアノ',
-          'max-results': 2,
-          format: 5,
-          alt: 'json-in-script',
-          callback: 'JSON_CALLBACK'
+          'maxResults': 1,
+          callback: 'JSON_CALLBACK',
+          part: 'snippet,statistics',
+          type: 'video',
+          videoDefinition: 'high',
+          videoEmbeddable: true,
+          chart: 'mostPopular',
+          key: 'AIzaSyAed5y3Syl_LLEDE9L5H9z20ridgfib5c0'
         }
       }).success(function(data) {
-        if (data.feed.entry) {
-          data.feed.entry.sort(function(a, b) {
-            return b.favoriteCount - a.favoriteCount;
-          });
-          var permalink = data.feed.entry[0].id.$t;
-          var videoId = permalink.match(/^.+\/(.+?)$/)[1];
+        if (data.items[0]) {
+          var videoId = data.items[0].id.videoId;
           deferred.resolve(videoId);
         } else {
           deferred.reject();
