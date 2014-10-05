@@ -17,12 +17,12 @@ angular.module('nagaretetter')
     query: function(song) {
       var deferred = $q.defer();
       var query = song.title + ' ' + song.artist;
-      $http.jsonp('https:///www.googleapis.com/youtube/v3/videos', {
+      $http.jsonp('https:///www.googleapis.com/youtube/v3/search', {
         params: {
           q: query + ' -みた -コピ -カラオケ -ピアノ',
           'maxResults': 1,
           callback: 'JSON_CALLBACK',
-          part: 'snippet,statistics',
+          part: 'snippet',
           type: 'video',
           videoDefinition: 'high',
           videoEmbeddable: true,
