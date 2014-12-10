@@ -7,11 +7,11 @@ angular.module('nagaretetter')
   var first_tag = document.getElementsByTagName('script')[0];
   first_tag.parentNode.insertBefore(tag, first_tag);
 })
-.controller('MainController', ['$scope', 'Songs', 'YouTube', 'PlayList', '$rootScope', 'd3Service', function($scope, Songs, YouTube, PlayList, $rootScope, d3Service) {
+.controller('MainController', ['$scope', 'Songs', 'YouTube', 'PlayList', '$rootScope', 'd3Service', '$state',  '$stateParams', function($scope, Songs, YouTube, PlayList, $rootScope, d3Service, $state, $stateParams) {
   d3Service.d3();
   $scope.songs = [];
   $scope.nextPage = 1;
-  $rootScope.targetUrl = '#analysis';
+  $rootScope.targetUrl = 'analysis';
   $rootScope.targetLinkName = 'Analysis';
 
   $scope.loadMore = function() {

@@ -5,8 +5,10 @@ angular.module('nagaretetter', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'd3'
+  'd3',
+  'ui.router'
 ])
+/*
 .config(function ($routeProvider) {
   $routeProvider
   .when('/', {
@@ -20,4 +22,27 @@ angular.module('nagaretetter', [
   .otherwise({
     redirectTo: '/'
   });
+});
+*/
+.config(function($stateProvider, $urlRouterProvider) {
+  //
+  // For any unmatched url, redirect to /state1
+  $urlRouterProvider.otherwise('/');
+  //
+  // Now set up the states
+  $stateProvider
+    .state('home', {
+      controller: function ($state) {
+        $state.go('main', null, { reload: true });
+      }
+    })
+    .state('main', {
+      url: '/',
+      templateUrl: 'views/main.html',
+      controller: 'MainController'
+    })
+    .state('analysis', {
+      url: '/analysis',
+      templateUrl: 'views/analysis.html'
+    });
 });
