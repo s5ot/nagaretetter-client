@@ -12,7 +12,7 @@ angular.module('nagaretetter')
   $scope.songs = [];
   $scope.nextPage = 1;
   $rootScope.targetUrl = 'analysis';
-  $rootScope.targetLinkName = 'Analysis';
+  $rootScope.targetLinkName = 'analysis';
 
   $scope.loadMore = function() {
     $scope.loading = true;
