@@ -1,8 +1,8 @@
 {
-  "name": "jwaveyarou-client",
+  "name": "nagaretetter-client",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "latest",
+    "angular": "1.4.0-beta.6",
     "json3": "~3.2.6",
     "es5-shim": "~2.1.0",
     "jquery": "~1.10.2",
