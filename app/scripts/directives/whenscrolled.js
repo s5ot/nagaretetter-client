@@ -7,17 +7,23 @@
  * # whenScrolled
  */
 angular.module('nagaretetter')
-.directive('whenScrolled', ['$window', function ($window) {
+.directive('whenScrolled', ['$window', '$timeout', function ($window, $timeout) {
   return {
     scope: {
       loadMore: '='
     },
     link: function(scope, elem, attr) {
       var raw = elem[elem.length - 1];
-      angular.element($window).bind('scroll', function() {
-        if (raw.offsetTop + raw.offsetHeight < document.documentElement.scrollTop + window.innerHeight) {
-          scope.loadMore();
-        }
+      var debounce;
+
+      angular.element(raw).bind('scroll', function() {
+        $timeout.cancel(debounce);
+        debounce = $timeout(function() {
+          if (raw.offsetTop + raw.offsetHeight < raw.scrollTop) {
+            console.log('fire');
+            scope.$emit('load_more', {});
+          }
+        }, 1000);
       });
     }
   };

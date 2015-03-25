@@ -1,21 +1,22 @@
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+<div ng-init="main.loadMore">
 <div class='col-xs-12 col-sm-7'>
   <div class=''>
     <div id="player"></div>
   </div>
 </div>
-<div class='col-xs-6 col-sm-5 sidebar-offcanvas' role="navigation" when-scrolled load-more='loadMore'>
+<div class='col-xs-6 col-sm-5 sidebar-offcanvas' role="navigation" when-scrolled load-more='main.loadMore'>
   <ul class='media-list'>
-    <li class='media' ng-class='{active: isActive($index)}' ng-repeat='song in songs | filter:query'
+    <li class='media' ng-class='{active: main.isActive($index)}' ng-repeat='song in main.songs | filter:query'
     class='list-group-item'>
-      <a class='pull-left' href='{{song.detail_page_url}}' target='_blank' ng-if='hasImage($index)'>
-        <img ng-src='{{songImage($index)}}' class="media-object" style="width: 64px; height: 64px;">
+      <a class='pull-left' href='{{song.detail_page_url}}' target='_blank' ng-if='main.hasImage($index)'>
+        <img ng-src='{{main.songImage($index)}}' class="media-object" style="width: 64px; height: 64px;">
         <!--
           <span class="glyphicon glyphicon-music"  style="width: 64px; height: 64px;"></span>
         -->
       </a>
-      <i class="fa fa-music fa-5x pull-left" ng-if='!hasImage($index)'></i>
-      <div class='media-body' ng-click='play($index)'>
+      <i class="fa fa-music fa-5x pull-left" ng-if='!main.hasImage($index)'></i>
+      <div class='media-body' ng-click='main.play($index)'>
         {{song.played_at | date: 'yyyy-MM-dd HH:mm'}}
         <h4 class='media-heading'>{{song.title}}</h4>
         {{song.artist}}
@@ -27,7 +28,8 @@
     </li>
   </ul>
 
-  <div style='text-align: center' ng-show='isLoading()'>
+  <div style='text-align: center' ng-show='main.isLoading()'>
     <img src='images/icon_loader_f_ww_01_s1.gif' />
   </div>
+</div>
 </div>

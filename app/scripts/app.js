@@ -39,7 +39,8 @@ angular.module('nagaretetter', [
     .state('main', {
       url: '/',
       templateUrl: 'views/main.html',
-      controller: 'MainController'
+      controller: 'MainController',
+      controllerAs: 'main'
     })
     .state('analysis', {
       url: '/analysis',
