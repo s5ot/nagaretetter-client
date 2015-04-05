@@ -3,6 +3,7 @@ general:
     only:
       - master # list of branches to build
       - /angular-1-4/ # or regexes
-dependencies:
+machine:
+  php:
   pre:
-    - sudo apt-get update; sudo apt-get install ruby-sass
+    - gem install compass
