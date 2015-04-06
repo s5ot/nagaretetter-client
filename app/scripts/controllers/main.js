@@ -58,18 +58,14 @@ angular.module('nagaretetter')
   };
 
   $scope.$on('load_more', function(event, data) {
-    console.log('receive: ' + event);
     this.loadMore();
   }.bind(this));
 
   $scope.$on('main_ready', function(event, data) {
-    console.log('receive: ' + event);
     this.loadMore();
   }.bind(this));
 
   $scope.$emit('main_ready', this);
-  console.log('main_ready');
 
   YouTube.ready = false;
-  //this.loadMore();
 }]);

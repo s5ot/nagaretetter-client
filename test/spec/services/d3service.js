@@ -3,7 +3,7 @@
 describe('Service: d3Service', function () {
 
   // load the service's module
-  beforeEach(module('jwaveyarouClientApp'));
+  beforeEach(module('nagaretetter'));
 
   // instantiate service
   var d3Service;

@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc service
- * @name jwaveyarouClientApp.d3Service
+ * @name nagaretetter.d3Service
  * @description
  * # d3Service
- * Factory in the jwaveyarouClientApp.
+ * Factory in the nagaretetter
  */
 angular.module('d3', [])
 .factory('d3Service', ['$document', '$q', '$rootScope', function ($document, $q, $rootScope) {

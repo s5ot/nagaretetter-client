@@ -3,7 +3,7 @@
 describe('Service: Songs', function () {
 
   // load the service's module
-  beforeEach(module('jwaveyarouClientApp'));
+  beforeEach(module('nagaretetter'));
 
   // instantiate service
   var Songs;

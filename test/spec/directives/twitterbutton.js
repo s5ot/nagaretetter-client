@@ -1,9 +1,9 @@
 'use strict';
 
-describe('Directive: About', function () {
+describe('Directive: TwitterButton', function () {
 
   // load the directive's module
-  beforeEach(module('jwaveyarouClientApp'));
+  beforeEach(module('nagaretetter'));
 
   var element,
     scope;
@@ -13,8 +13,8 @@ describe('Directive: About', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<-about></-about>');
+    element = angular.element('<a twitter-button data-text="HEARTBEAT - TAHITI 80"></a>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the About directive');
+    expect(element).not.toBe(null);
   }));
 });

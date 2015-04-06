@@ -3,7 +3,7 @@
 describe('Directive: rankingChart', function () {
 
   // load the directive's module
-  beforeEach(module('jwaveyarouClientApp'));
+  beforeEach(module('nagaretetter'));
 
   var element,
     scope;
@@ -13,8 +13,8 @@ describe('Directive: rankingChart', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<ranking-chart></ranking-chart>');
+    element = angular.element('<div ranking-chart class="analysis-main"></div>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the rankingChart directive');
+    expect(element.text()).not.toBe(null);
   }));
 });

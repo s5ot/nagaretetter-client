@@ -13,8 +13,8 @@ describe('Directive: whenScrolled', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<when-scrolled></when-scrolled>');
+    element = angular.element('<div when-scrolled></div>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the whenScrolled directive');
+    expect(element.text()).not.toBe(null);
   }));
 });

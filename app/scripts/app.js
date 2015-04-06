@@ -4,26 +4,9 @@ angular.module('nagaretetter', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute',
   'd3',
   'ui.router'
 ])
-/*
-.config(function ($routeProvider) {
-  $routeProvider
-  .when('/', {
-    templateUrl: 'views/main.html',
-    controller: 'MainController'
-  })
-  .when('/analysis', {
-    templateUrl: 'views/analysis.html',
-    controller: 'AnalysisController'
-  })
-  .otherwise({
-    redirectTo: '/'
-  });
-});
-*/
 .config(function($stateProvider, $urlRouterProvider) {
   //
   // For any unmatched url, redirect to /state1

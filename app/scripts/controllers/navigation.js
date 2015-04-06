@@ -1,5 +1,5 @@
 'use strict';
 angular.module('nagaretetter')
-.controller('NavigationCtrl', function ($scope) {
+.controller('NavigationController', function ($scope) {
   console.log('nav');
 });

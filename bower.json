@@ -11,7 +11,7 @@
     "angular-cookies": "latest",
     "angular-sanitize": "latest",
     "angular-route": "latest",
-    "angular-ui-router": "latest"
+    "angular-ui-router": "0.2.13"
   },
   "devDependencies": {
     "angular-mocks": "latest",

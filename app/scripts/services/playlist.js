@@ -5,7 +5,7 @@
  * @name nagaretetter.PlayList
  * @description
  * # PlayList
- * Service in the jwaveyarouClientApp.
+ * Service in the nagaretetter.
  */
 angular.module('nagaretetter')
 .service('PlayList', function PlayList() {

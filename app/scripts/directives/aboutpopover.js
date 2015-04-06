@@ -9,6 +9,7 @@
 angular.module('nagaretetter')
   .directive('aboutPopover', function () {
     return {
+      restrict: 'A',
       link: function postLink(scope, element, attrs) {
         element.popover({trigger: 'hover'}).on('click', function(e) {
           e.preventDefault();
