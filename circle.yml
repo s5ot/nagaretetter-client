@@ -3,7 +3,7 @@ general:
     only:
       - master # list of branches to build
       - /angular-1-4/ # or regexes
-machine:
-  php:
-  pre:
-    - gem install compass
+dependencies:
+  override:
+    - gem install sass compass:
+        timeout: 600
