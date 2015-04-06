@@ -7,3 +7,9 @@ dependencies:
   override:
     - gem install sass compass:
         timeout: 600
+
+test:
+  pre:
+    - npm install -g karma
+    - npm install -g bower
+    - bower install --config.directory=./app/bower_components
